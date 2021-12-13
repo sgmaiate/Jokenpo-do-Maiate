@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Jokenpo do Maiate</title>
+  </head>
+
+  <body>
+    <section class="page-game">
+      <header>
+        <h1>JOKENPO DO MAIATE</h1>
+      </header>
+      <main>
+        <section class="game">
+          <div class="game-choices">
+            <button class="choice">Pedra</button>
+            <button class="choice">Papel</button>
+            <button class="choice">Tesoura</button>
+          </div>
+          <div class="scoreboard">
+            <p>Jogador<span class="playerScore">00</span></p>
+            <p>Maiate<span class="computerScore">00</span></p>
+            <p>Empate<span class="draw">00</span></p>
+          </div>
+        </section>
+      </main>
+      <section class="visibility hidden">
+        <div class="result-page">
+          <h2>pressione esc para fechar</h2>
+          <p class="declared-choices"></p>
+          <h1 class="result"></h1>
+        </div>
+      </section>
+    </section>
+    <script src="./script/script.js"></script>
+
+    <footer class="page-footer"></footer>
+  </body>
+</html>
