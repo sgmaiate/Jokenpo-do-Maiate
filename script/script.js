@@ -14,10 +14,8 @@ function computerChoice() {
 }
 function gameStart() {
   computer = computerChoice();
-  console.log(computer);
   if (playerChoice == "Pedra") {
     if (computer == "Pedra") {
-      console.log("Você empatou");
       scoreboard.children[2].firstElementChild.innerHTML =
         Number(scoreboard.children[2].firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -25,7 +23,6 @@ function gameStart() {
       showResult();
       drawPage();
     } else if (computer == "Tesoura") {
-      console.log("Você ganhou");
       scoreboard.firstElementChild.firstElementChild.innerHTML =
         Number(scoreboard.firstElementChild.firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -33,7 +30,6 @@ function gameStart() {
       showResult();
       winPage();
     } else {
-      console.log("Você perdeu");
       scoreboard.children[1].firstElementChild.innerHTML =
         Number(scoreboard.children[1].firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -44,7 +40,6 @@ function gameStart() {
   }
   if (playerChoice == "Papel") {
     if (computer == "Pedra") {
-      console.log("Você ganhou");
       scoreboard.firstElementChild.firstElementChild.innerHTML =
         Number(scoreboard.firstElementChild.firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -52,7 +47,6 @@ function gameStart() {
       showResult();
       winPage();
     } else if (computer == "Tesoura") {
-      console.log("Você perdeu");
       scoreboard.children[1].firstElementChild.innerHTML =
         Number(scoreboard.children[1].firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -60,7 +54,6 @@ function gameStart() {
       showResult();
       losePage();
     } else {
-      console.log("Você empatou");
       scoreboard.children[2].firstElementChild.innerHTML =
         Number(scoreboard.children[2].firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -71,7 +64,6 @@ function gameStart() {
   }
   if (playerChoice == "Tesoura") {
     if (computer == "Pedra") {
-      console.log("Você perdeu");
       scoreboard.children[1].firstElementChild.innerHTML =
         Number(scoreboard.children[1].firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -79,7 +71,6 @@ function gameStart() {
       showResult();
       losePage();
     } else if (computer == "Tesoura") {
-      console.log("Você empatou");
       scoreboard.children[2].firstElementChild.innerHTML =
         Number(scoreboard.children[2].firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -87,7 +78,6 @@ function gameStart() {
       showResult();
       drawPage();
     } else {
-      console.log("Você ganhou");
       scoreboard.firstElementChild.firstElementChild.innerHTML =
         Number(scoreboard.firstElementChild.firstElementChild.innerHTML) + 1;
       declaredChoices.innerHTML = `Você jogou ${playerChoice} e o Maiate jogou ${computer}`;
@@ -99,6 +89,7 @@ function gameStart() {
 }
 function showResult() {
   resultScreen.classList.remove("hidden");
+  setTimeout(closeResult, 3000);
 }
 function getRock() {
   playerChoice = "Pedra";
@@ -112,11 +103,14 @@ function getScissor() {
   playerChoice = "Tesoura";
   gameStart();
 }
-function closeResult(event) {
+function closeResultKeyboard(event) {
   const isEscKey = event.key === "Escape";
   if (isEscKey) {
     resultScreen.classList.add("hidden");
   }
+}
+function closeResult() {
+  resultScreen.classList.add("hidden");
 }
 function winPage() {
   resultScreen.firstElementChild.classList.remove("lose-result");
@@ -139,4 +133,4 @@ function drawPage() {
 playerChoice[0].addEventListener("click", getRock);
 playerChoice[1].addEventListener("click", getPaper);
 playerChoice[2].addEventListener("click", getScissor);
-document.addEventListener("keydown", closeResult);
+document.addEventListener("keydown", closeResultKeyboard);
