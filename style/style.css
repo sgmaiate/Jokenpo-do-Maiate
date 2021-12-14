@@ -7,19 +7,39 @@
   margin: 0;
   padding: 0;
   font-family: party;
+  box-sizing: border-box;
 }
 body {
-  height: 690px;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to bottom, rgb(61, 255, 255), rgb(82, 81, 81));
+  z-index: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+@keyframes getUp {
+  from {
+    margin-top: 260px;
+  }
+  to {
+    margin-top: -550px;
+  }
+}
+.balloon-animation {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 60%;
+  background-image: url(../images/baloons.png);
+  opacity: 50%;
+  animation: getUp 4s infinite;
 }
 .page-game {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../images/background.jpg);
-  background-size: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 header {
   font-family: party;
@@ -77,25 +97,26 @@ header {
   z-index: 3;
   position: absolute;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
-  width: 1310px;
-  height: 690px;
+  width: 100vw;
+  height: 100vh;
 }
 .result-page {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   margin: 130px auto;
-  width: 700px;
-  height: 500px;
+  width: 70vw;
+  height: 70vh;
   background-color: blue;
   border-radius: 20px;
   color: white;
 }
 .declared-choices {
   margin-top: 150px;
-  font-size: 30px;
+  font-size: 50px;
 }
 .result {
   margin-top: 100px;
@@ -126,4 +147,43 @@ header {
   background-position: center;
 }
 @media (max-width: 700px) {
+  .game-choices {
+    flex-direction: column;
+    margin-top: 100px;
+  }
+  .choice {
+    font-size: 40px;
+    width: 250px;
+    height: 200px;
+  }
+  header {
+    font-size: 40px;
+  }
+  .scoreboard {
+    flex-direction: column;
+    width: 230px;
+    margin: 100px auto;
+  }
+  .visibility {
+    height: 100%;
+    width: 200%;
+  }
+  .result-page {
+  }
+}
+
+@media (max-width: 450px) {
+  .page-game {
+    width: 125vw;
+    height: 150vh;
+  }
+  .balloon-animation {
+    width: 150%;
+    height: 200%;
+  }
+  .win-result,
+  .lose-result,
+  .draw-result {
+    background-size: 500%;
+  }
 }

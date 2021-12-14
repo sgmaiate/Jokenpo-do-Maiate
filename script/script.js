@@ -103,12 +103,6 @@ function getScissor() {
   playerChoice = "Tesoura";
   gameStart();
 }
-function closeResultKeyboard(event) {
-  const isEscKey = event.key === "Escape";
-  if (isEscKey) {
-    resultScreen.classList.add("hidden");
-  }
-}
 function closeResult() {
   resultScreen.classList.add("hidden");
 }
@@ -133,4 +127,3 @@ function drawPage() {
 playerChoice[0].addEventListener("click", getRock);
 playerChoice[1].addEventListener("click", getPaper);
 playerChoice[2].addEventListener("click", getScissor);
-document.addEventListener("keydown", closeResultKeyboard);
